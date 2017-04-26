@@ -1,0 +1,24 @@
+# Simple Makefile
+
+# Vars
+CC= gcc #-fsanitize=address
+CPPFLAGS= -MMD
+CFLAGS= -Werror -Wall -Wextra -std=c99 -O2 -g3
+LDFLAGS=
+LDLIBS=
+
+SRC= main.c chessBoard.c pieces.c arbitrator.c moveRules.c
+OBJ= ${SRC:.c=.o}
+DEP= ${SRC:.c=.d}
+
+all: main
+
+main: ${OBJ}
+
+clean:
+	${RM} ${OBJ} ${DEP} main
+
+-include ${DEP}
+
+# END of Makefile
+
